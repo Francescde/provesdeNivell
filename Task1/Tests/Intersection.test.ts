@@ -15,7 +15,7 @@ describe("Given 2 cubes with edges parallel to the axes that intersect", () => {
         expect(intersection.cartesianCubesIntersect(cubeA, cubeB).intersection).toBe(true);
     });
 });
-/*
+
 describe("Given 2 cubes with edges parallel to the axes that don't intersect", () => {
     it("should return an structure telling us that the cubes don't intersect", () => {
         let sizeA: number=4;
@@ -27,4 +27,4 @@ describe("Given 2 cubes with edges parallel to the axes that don't intersect", (
         let intersection: Intersection = new Intersection();
         expect(intersection.cartesianCubesIntersect(cubeA, cubeB).intersection).toBe(false);
     });
-});*/
+});

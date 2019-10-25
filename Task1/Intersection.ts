@@ -5,7 +5,7 @@ export class Intersection implements Intersection{
     constructor() {
     }
     cartesianCubesIntersect(cube1: CartesianCube, cube2: CartesianCube) {
-        return {intersection:true};
+        return {intersection:cube1.cartesianCubeIntersection(cube2)};
     }
 }
 
