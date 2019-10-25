@@ -1,10 +1,10 @@
 
-import {Cube} from "./Cube";
+import {CartesianCube} from "./CartesianCube";
 
 export class Intersection implements Intersection{
     constructor() {
     }
-    cubesIntesect(cube1: Cube, cube2: Cube) {
+    cartesianCubesIntersect(cube1: CartesianCube, cube2: CartesianCube) {
         return {intersection:true};
     }
 }
