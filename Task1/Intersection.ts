@@ -1,10 +1,11 @@
+
+import {Cube} from "./Cube";
+
 export class Intersection implements Intersection{
-    intersect: boolean;
     constructor() {
-        this.intersect = true;
     }
-    cubesIntesect() {
-        return this.intersect;
+    cubesIntesect(cube1: Cube, cube2: Cube) {
+        return {intersection:true};
     }
 }
 
