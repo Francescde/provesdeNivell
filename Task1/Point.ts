@@ -1,5 +1,5 @@
 
-export class Vertex implements Vertex{
+export class Point implements Point{
     x : number;
     y : number;
     z : number;
