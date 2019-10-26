@@ -8,9 +8,9 @@ Recomanem: Java, C# o Javascript.
 
 ##COMENTARIS:
 A part de resoldre els exercicis es valorarà argumentar breument:
--          La tria de la implementació presentada
--          Altres possibles solucions o alternatives
--          Complexitat de temps i/o espai
+- La tria de la implementació presentada
+- Altres possibles solucions o alternatives
+- Complexitat de temps i/o espai
 
 ##TERMINI DE LLIURAMENT:
 
