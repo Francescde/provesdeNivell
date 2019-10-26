@@ -11,7 +11,7 @@ Note: the coordinates specify the CENTER of the cube!
 
 ## Result:
 
-To asert the colision of the cubes and the volume intersection i build the library intersection. In this library we have the function cartesianCubesIntersect wich handles the intersection of two cubes with the same characteristics of the resulting cubes.
+To asert the collision of the cubes and the volume intersection i build the library intersection. In this library we have the function cartesianCubesIntersect wich handles the intersection of two cubes with the same characteristics of the resulting cubes.
 
 The function cartesianCubesIntersect uses the particularity of the cubes described in the statement to answer if they colide and the volume of the interection. To that end cartesianCubesIntersect uses the class CartesianCube that uses the fact that the cubes have the edges parallel to the axes to check the colition of the cubes and in given case the volume of the intersection.
 
@@ -65,13 +65,13 @@ In the sample case the shared volume is 8. We confirmed that using the function 
 
 #### 3. Other possible solutions
 
-Another possible solution would be to use the Monte Carlo Estimation to check the resulting volume of the colition
+Another possible solution would be to use the Monte Carlo Estimation to check the resulting volume of the collision
 
-The idea is to try N uniformaly random points in a finite space containing the intersecting volume. As we are able to easly check if a point is part of the intersection we can easly manage a big sample of points.
- 
-With that sample we are able to estimate the probability to be part of the intersected space of a random point. As we know the volume of the observed space we can deduce the intersectd space is: the volum of the observet space multiplied by the probability of being part of the intersected space
+The idea is to try N random points in a finite space containing the intersecting volume. As we are able to easily check if a point is part of the intersection, we can easily manage a large sample of points. Using that sample we are able to estimate the probability to be part of the intersected space for a random point. 
 
-    Intersected volume = volume observation x probability of being intersection
+We know the volume of the observed space, thus we can deduce the volume of the intersected space is: the volum of the observet space multiplied by the probability of being part of the intersected space
+
+    Intersected volume = volume observation x probability of random point being inside intersection
     
 A resulting code in python would be the following
 
