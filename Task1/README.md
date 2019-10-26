@@ -1,15 +1,15 @@
-###TASK 1:
+# TASK 1:
 
 Create a small application that allows a user to enter the dimensions and coordinates of two cubic objects in a 3-dimensional space. The two cubes are parallel to each other (they are not rotated in any way). Once the information has been entered, the application should calculate if the two cubes intersect, and if so, what the volume of the shared space is.
 Note: the coordinates specify the CENTER of the cube!
 
 
-##Sample Data:
+## Sample Data:
         Cube A: Size = 4m. Coordinates: x = 7m, y = 7m, z = 0
         Cube B: Size = 2m. Coordinates: x = 6m, y = 6m, z = 0
 
 
-##Result:
+## Result:
 
 To asert the colision of the cubes and the volume intersection i build the library intersection. In this library we have the function cartesianCubesIntersect wich handles the intersection of two cubes with the same characteristics of the resulting cubes.
 
@@ -17,7 +17,7 @@ The function cartesianCubesIntersect uses the particularity of the cubes describ
 
 The main questions CartesianCube solves are:
 
-####1.  Do the cubes intersect?
+##### 1.  Do the cubes intersect?
 
 In the sample case the cubes intersect. we confirmed that using the function cartesianCubeIntersection as all the edges of any of the statment cubes are parallel to the edges
 
@@ -39,7 +39,7 @@ In the sample case the cubes intersect. we confirmed that using the function car
         return false;
     } 
 
-####2.  What is the volume of the shared space?
+#### 2.  What is the volume of the shared space?
 
 In the sample case the shared volume is 8. We confirmed that using the function cartesianCubeVolumeOfIntersection. As the resulting hexahedron will have it's edges parallel to the axis we just neded to know the minimum and maxim values each axis could have to build the resulting hexaedron and get it's volume
 
@@ -63,7 +63,7 @@ In the sample case the shared volume is 8. We confirmed that using the function 
     }    
 
 
-####3. Other possible solutions
+#### 3. Other possible solutions
 
 Another possible solution would be to use the Monte Carlo Estimation to check the resulting volume of the colition
 
@@ -136,4 +136,4 @@ We could for example do the following:
 
 The major drawback of this method is that we need to check N random points. But for complex forms this is a grat succes
 
-To check the Monte Carlo method i build the script '''Monte Carlo.ipynb''' executable in google coolab
+To check the Monte Carlo method i build the script ***Monte Carlo.ipynb*** executable in google coolab
