@@ -2,16 +2,15 @@
 import {Point} from "./Point";
 import {CartesianCube} from "./CartesianCube";
 
-export class Intersection implements Intersection{
-    constructor() {
-    }
+export module Intersection {
 
-    cartesianCubesIntersect(cube1: CartesianCube, cube2: CartesianCube) {
+    export function cartesianCubesIntersect(cubeA: CartesianCube, cubeB: CartesianCube) {
         let intersection= {
-            intersection:cube1.cartesianCubeIntersection(cube2),
-            volume: cube1.cartesianCubeVolumeOfIntersection(cube2)
+            intersection:cubeA.cartesianCubeIntersection(cubeB),
+            volume: cubeA.cartesianCubeVolumeOfIntersection(cubeB)
         };
         return intersection;
+
     }
 }
 

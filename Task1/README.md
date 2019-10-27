@@ -75,7 +75,26 @@ As the hexahedron resulting from that colition will have it's edges parallel to 
 
 Using this function we confirmed that in the sample case the shared volume is 8.
 
-#### 3. Other possible solutions
+#### 3. How to test the implementation
+
+1.- Clone or download the repository.
+
+    git clone https://github.com/Francescde/provesdeNivell.git
+
+2.- On that terminal go to this folder
+
+    cd provesdeNivell/Task1
+
+2.- Install the dependancies
+
+    npm install
+
+4.- Run the tests on the subfolder Tests
+
+    npm test
+
+
+#### 4. Other possible solutions
 
 Another possible solution would be to use the Monte Carlo Estimation to check the resulting volume of the collision
 

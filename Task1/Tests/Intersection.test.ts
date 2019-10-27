@@ -11,8 +11,7 @@ describe("Given 2 cubes with edges parallel to the axes that intersect", () => {
         let sizeB: number=2;
         let coordinatesB: Point= new Point(6,6,0);
         let cubeB: CartesianCube = new CartesianCube(sizeB, coordinatesB);
-        let intersection: Intersection = new Intersection();
-        let result = intersection.cartesianCubesIntersect(cubeA, cubeB)
+        let result = Intersection.cartesianCubesIntersect(cubeA, cubeB)
         expect(result.intersection).toBe(true);
     });
     it("should return an structure telling us the intersecting volume", () => {
@@ -22,8 +21,7 @@ describe("Given 2 cubes with edges parallel to the axes that intersect", () => {
         let sizeB: number=2;
         let coordinatesB: Point= new Point(6,6,0);
         let cubeB: CartesianCube = new CartesianCube(sizeB, coordinatesB);
-        let intersection: Intersection = new Intersection();
-        let result = intersection.cartesianCubesIntersect(cubeA, cubeB)
+        let result = Intersection.cartesianCubesIntersect(cubeA, cubeB)
         expect(result.volume).toBe(2*2*2);
     });
 
@@ -34,8 +32,7 @@ describe("Given 2 cubes with edges parallel to the axes that intersect", () => {
         let sizeB: number=1;
         let coordinatesB: Point= new Point(0,0,0);
         let cubeB: CartesianCube = new CartesianCube(sizeB, coordinatesB);
-        let intersection: Intersection = new Intersection();
-        let result = intersection.cartesianCubesIntersect(cubeA, cubeB)
+        let result = Intersection.cartesianCubesIntersect(cubeA, cubeB)
         expect(result.intersection).toBe(true);
     });
     it("should return an structure telling us the intersecting volume", () => {
@@ -45,8 +42,7 @@ describe("Given 2 cubes with edges parallel to the axes that intersect", () => {
         let sizeB: number=1;
         let coordinatesB: Point= new Point(0,0,0);
         let cubeB: CartesianCube = new CartesianCube(sizeB, coordinatesB);
-        let intersection: Intersection = new Intersection();
-        let result = intersection.cartesianCubesIntersect(cubeA, cubeB)
+        let result = Intersection.cartesianCubesIntersect(cubeA, cubeB)
         expect(result.volume).toBe( 1/8);
     });
     it("should return an structure telling us the intersecting volume", () => {
@@ -56,8 +52,7 @@ describe("Given 2 cubes with edges parallel to the axes that intersect", () => {
         let sizeB: number=1;
         let coordinatesB: Point= new Point(3.5,3.5,0);
         let cubeB: CartesianCube = new CartesianCube(sizeB, coordinatesB);
-        let intersection: Intersection = new Intersection();
-        let result = intersection.cartesianCubesIntersect(cubeA, cubeB)
+        let result = Intersection.cartesianCubesIntersect(cubeA, cubeB)
         expect(result.intersection).toBe( true);
     });
     it("should return an structure telling us the intersecting volume", () => {
@@ -67,8 +62,7 @@ describe("Given 2 cubes with edges parallel to the axes that intersect", () => {
         let sizeB: number=1;
         let coordinatesB: Point= new Point(3.5,3.5,0);
         let cubeB: CartesianCube = new CartesianCube(sizeB, coordinatesB);
-        let intersection: Intersection = new Intersection();
-        let result = intersection.cartesianCubesIntersect(cubeA, cubeB)
+        let result = Intersection.cartesianCubesIntersect(cubeA, cubeB)
         expect(result.volume).toBe( 1/4);
     });
 });
@@ -81,8 +75,7 @@ describe("Given 2 cubes with edges parallel to the axes that don't intersect", (
         let sizeB: number=2;
         let coordinatesB: Point= new Point(0,0,0);
         let cubeB: CartesianCube = new CartesianCube(sizeB, coordinatesB);
-        let intersection: Intersection = new Intersection();
-        let result = intersection.cartesianCubesIntersect(cubeA, cubeB)
+        let result = Intersection.cartesianCubesIntersect(cubeA, cubeB)
         expect(result.intersection).toBe(false);
     });
     it("should return an structure telling us that the cubes don't intersect", () => {
@@ -92,8 +85,7 @@ describe("Given 2 cubes with edges parallel to the axes that don't intersect", (
         let sizeB: number=1;
         let coordinatesB: Point= new Point(0,0,0);
         let cubeB: CartesianCube = new CartesianCube(sizeB, coordinatesB);
-        let intersection: Intersection = new Intersection();
-        let result = intersection.cartesianCubesIntersect(cubeA, cubeB)
+        let result = Intersection.cartesianCubesIntersect(cubeA, cubeB)
         expect(result.intersection).toBe(false);
     });
     it("should return an structure telling us that the intersecting volume is 0", () => {
@@ -103,8 +95,7 @@ describe("Given 2 cubes with edges parallel to the axes that don't intersect", (
         let sizeB: number=2;
         let coordinatesB: Point= new Point(0,0,0);
         let cubeB: CartesianCube = new CartesianCube(sizeB, coordinatesB);
-        let intersection: Intersection = new Intersection();
-        let result = intersection.cartesianCubesIntersect(cubeA, cubeB)
+        let result = Intersection.cartesianCubesIntersect(cubeA, cubeB)
         expect(result.volume).toBe(0);
     });
 });
