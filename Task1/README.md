@@ -11,16 +11,23 @@ Note: the coordinates specify the CENTER of the cube!
 
 ## Result:
 
-To asert the collision of the cubes and the volume intersection i build the library intersection. In this library we have the function cartesianCubesIntersect wich handles the intersection of two cubes with the same characteristics of the resulting cubes.
+To asert the collision of the cubes and the volume intersection i build the library intersection. In this library we have the function cartesianCubesIntersect wich handles the intersection of two cubes with the same characteristics of the cubes described in the statement.
 
-The function cartesianCubesIntersect uses the particularity of the cubes described in the statement to answer if they colide and the volume of the interection. To that end cartesianCubesIntersect uses the class CartesianCube that uses the fact that the cubes have the edges parallel to the axes to check the colition of the cubes and in given case the volume of the intersection.
+The function cartesianCubesIntersect uses the particularity of having the edges parallel to the axes to answer if they colide and the volume of the interssection. To that end cartesianCubesIntersect uses the class CartesianCube that describes a cube with this particularity.
 
-The main questions CartesianCube solves are:
+    cartesianCubesIntersect(cube1: CartesianCube, cube2: CartesianCube) {
+        let intersection= {
+            intersection:cube1.cartesianCubeIntersection(cube2),
+            volume: cube1.cartesianCubeVolumeOfIntersection(cube2)
+        };
+        return intersection;
+    }
 
-##### 1.  Do the cubes intersect?
+In particular cartesianCube solves us:
 
-In the sample case the cubes intersect. we confirmed that using the function cartesianCubeIntersection as all the edges of any of the statment cubes are parallel to the edges
+##### 1.  Does the cube intersect with another cube?
 
+The cartesianCube class have the funcion cartesianCubeIntersection wich asserts if another cartesianCube collides with the cube described by the class. It does that by looking if for all the axes the distance between the centers of the cubes is less than the sumatory of half the sides distance. This works for the cartesianCubes as all the edges of the cube follow the axes, as stated before.
 
     cartesianCubeIntersection( otherCube: CartesianCube){
         //check the X axis
@@ -39,10 +46,13 @@ In the sample case the cubes intersect. we confirmed that using the function car
         return false;
     } 
 
+Using this function we confirmed that in the sample case the cubes intersect.
+
 #### 2.  What is the volume of the shared space?
 
-In the sample case the shared volume is 8. We confirmed that using the function cartesianCubeVolumeOfIntersection. As the resulting hexahedron will have it's edges parallel to the axis we just neded to know the minimum and maxim values each axis could have to build the resulting hexaedron and get it's volume
+The function cartesianCubeVolumeOfIntersection of the class cartesianCube gives us the volume of the collision space between the cartesianCube by the class and another cartesianCube.
 
+As the hexahedron resulting from that colition will have it's edges parallel to the axis. We just need to know the cube minimum and maxim values for each axis. With that information we can know the vertices of the resulting hexaedron and get it's volume.
 
 
     cartesianCubeVolumeOfIntersection(other: CartesianCube) {
@@ -63,17 +73,19 @@ In the sample case the shared volume is 8. We confirmed that using the function 
     }    
 
 
+Using this function we confirmed that in the sample case the shared volume is 8.
+
 #### 3. Other possible solutions
 
 Another possible solution would be to use the Monte Carlo Estimation to check the resulting volume of the collision
 
-The idea is to try N random points in a finite space containing the intersecting volume. As we are able to easily check if a point is part of the intersection, we can easily manage a large sample of points. Using that sample we are able to estimate the probability to be part of the intersected space for a random point. 
+The idea is to try N random points in a finite space containing the intersecting volume. As we are able to easily check if a point is part of the intersection, we can easily manage a large sample of points. Using that sample we are able to estimate the probability for a random point to be part of the intersected space. 
 
-We know the volume of the observed space, thus we can deduce the volume of the intersected space is: the volum of the observet space multiplied by the probability of being part of the intersected space
+As we know the volume of the observed space, thus we can deduce the volume of the intersected space is: the volum of the observet space multiplied by the probability of being part of the intersected space.
 
-    Intersected volume = volume observation x probability of random point being inside intersection
+        Intersected volume = volume observation x probability of random point being inside intersection
     
-A resulting code in python would be the following
+The following code implements this functionality in python:
 
 
     import numpy as np
@@ -110,7 +122,7 @@ A resulting code in python would be the following
         count_in_sphere=len(colides[0])
         return np.power(radio*2, dim)* (count_in_sphere / iterations)
     
-To use this structure we would just need the maximum distance from the center of coordinates and the volum of the intersecting figures.
+To use this implementation we would just need to specify the maximum distance from the center of coordinates and the volume of the intersecting figures.
 
 In the sample case scenario:
 
@@ -120,7 +132,8 @@ In the sample case scenario:
     
 
 The bigest advantage of this method is that it doesen't just allows us to get the volume of two intersecting cubes, we could define any other figure and the code would be able to estimate it's volume.
-We could for example do the following:
+
+For example, we could define an sphere as we do in the following code:
 
     class Sphere:
       def __init__(self, radius):
@@ -134,6 +147,6 @@ We could for example do the following:
     print(Volume(Cube(1,0.5,0.5,0.5),Sphere(1),r))
 
 
-The major drawback of this method is that we need to check N random points. But for complex forms this is a grat succes
+The major drawback of this method is that we need the computation of N random points. In contrast with the geometrical way, that it would had the cost of calculaing one point. So althought for complex volumes this aproximation could be a realy reasonable way. In this particular case i prefer the geometrical way.
 
 To check the Monte Carlo method i build the script ***Monte Carlo.ipynb*** executable in google coolab
