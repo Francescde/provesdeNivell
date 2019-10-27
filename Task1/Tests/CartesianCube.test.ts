@@ -54,7 +54,11 @@ describe("Given a cube with edges parallel to the axes", () => {
         //assert
         expect(vertices.length).toBe(8);
     });
-    it("The cube should be able to confirm if a point is inside the cube", () => {
+});
+
+
+describe("Given a cube with edges parallel to the axes and a point", () => {
+    it("The cube should be able to confirm that the point is inside the cube", () => {
         //arrenge
         let size: number=4;
         let coordinates: Point= new Point(7,7,0);
@@ -63,5 +67,15 @@ describe("Given a cube with edges parallel to the axes", () => {
         let inside:boolean = cartesianCube.pointInside(new Point(7,7,0));
         //assert
         expect(inside).toBe(true);
+    });
+    it("The cube should be able to tell that the point is outside the cube", () => {
+        //arrenge
+        let size: number=4;
+        let coordinates: Point= new Point(0,0,0);
+        let cartesianCube: CartesianCube = new CartesianCube(size, coordinates);
+        //act
+        let inside:boolean = cartesianCube.pointInside(new Point(7,7,0));
+        //assert
+        expect(inside).toBe(false);
     });
 });

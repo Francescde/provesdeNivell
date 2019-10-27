@@ -11,7 +11,7 @@ Note: the coordinates specify the CENTER of the cube!
 
 ## Result:
 
-To asert the collision of the cubes and the volume intersection i build the library intersection. In this library we have the function cartesianCubesIntersect wich handles the intersection of two cubes with the same characteristics of the cubes described in the statement.
+To assert the collision of the cubes and the volume intersection I built the library intersection. In this library we have the function cartesianCubesIntersect wich handles the intersection of two cubes with the same characteristics of the cubes described in the statement.
 
 The function cartesianCubesIntersect uses the particularity of having the edges parallel to the axes to answer if they colide and the volume of the interssection. To that end cartesianCubesIntersect uses the class CartesianCube that describes a cube with this particularity.
 
