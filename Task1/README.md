@@ -46,7 +46,7 @@ The cartesianCube class have the funcion cartesianCubeIntersection wich asserts 
         return false;
     } 
 
-Using this function we confirmed that in the sample case the cubes intersect.
+***Using this function we confirmed that in the sample case the cubes intersect.***
 
 #### 2.  What is the volume of the shared space?
 
@@ -73,7 +73,7 @@ As the hexahedron resulting from that colition will have it's edges parallel to 
     }    
 
 
-Using this function we confirmed that in the sample case the shared volume is 8.
+***Using this function we confirmed that in the sample case the shared volume is 8.***
 
 #### 3. Other possible solutions
 
