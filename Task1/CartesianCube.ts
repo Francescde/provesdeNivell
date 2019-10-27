@@ -27,7 +27,7 @@ export class CartesianCube implements CartesianCube{
     }
 
     getVertices() {
-        let halfSize:number= this.size/2;
+        const halfSize:number= this.size/2;
         let vertices = [];
         vertices.push(new Point(this.center.x-halfSize,this.center.y-halfSize,this.center.z-halfSize));
         vertices.push(new Point(this.center.x+halfSize,this.center.y-halfSize,this.center.z-halfSize));
@@ -59,14 +59,14 @@ export class CartesianCube implements CartesianCube{
     cartesianCubeVolumeOfIntersection(other: CartesianCube) {
         let volume:number=0;
         if(this.cartesianCubeIntersection(other)) {
-            let HalfSize: number = this.size / 2;
-            let cube2HalfSize: number = other.size / 2;
-            let minX: number = Math.max(this.center.x - HalfSize, other.center.x - cube2HalfSize);
-            let minY: number = Math.max(this.center.y - HalfSize, other.center.y - cube2HalfSize);
-            let minZ: number = Math.max(this.center.z - HalfSize, other.center.z - cube2HalfSize);
-            let maxX: number = Math.min(this.center.x + HalfSize, other.center.x + cube2HalfSize);
-            let maxY: number = Math.min(this.center.y + HalfSize, other.center.y + cube2HalfSize);
-            let maxZ: number = Math.min(this.center.z + HalfSize, other.center.z + cube2HalfSize);
+            const HalfSize: number = this.size / 2;
+            const cube2HalfSize: number = other.size / 2;
+            const minX: number = Math.max(this.center.x - HalfSize, other.center.x - cube2HalfSize);
+            const minY: number = Math.max(this.center.y - HalfSize, other.center.y - cube2HalfSize);
+            const minZ: number = Math.max(this.center.z - HalfSize, other.center.z - cube2HalfSize);
+            const maxX: number = Math.min(this.center.x + HalfSize, other.center.x + cube2HalfSize);
+            const maxY: number = Math.min(this.center.y + HalfSize, other.center.y + cube2HalfSize);
+            const maxZ: number = Math.min(this.center.z + HalfSize, other.center.z + cube2HalfSize);
             volume = (Math.abs(maxX - minX)) * (Math.abs(maxY - minY)) * (Math.abs(maxZ - minZ));
         }
         return volume;
