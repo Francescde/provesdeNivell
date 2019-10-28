@@ -57,12 +57,11 @@ This solution is build in the module StringArePermutation using the function com
 
 ## Decision
 
-Performance wise I think the second solution can be quicker than the first one with large strings. This is because the sorting algorithm needs from n*(log n) comparisions to n**2 and the other algorithm it's lineal
+Performance wise I think the second solution can be quicker than the first one with large strings. 
 
-Although I prefer the first implementation. The main reason being that the first solution it's more readable than the second one. And if a new developer has to change it's behavior it will have an easier time understanding the program. So in conclusion any update would be cheaper.
-                                            
-Furthermore I don't consider, in this scenario, the execution time to be a decisive factor. If I did I would have built the solution in a compiled language like c rather than an interpreted one, and also if I want a better execution time the solution is rather simple: It's as easy as to look for a better machine.
+This is because the sorting algorithm needs from n*(log n) comparisons to n**2 (where n is the size of the strings) and it has to sort two strings and then compare the results.
 
+On the other hand the other algorithm it's lineal with just two loops of n words. And the comparations are smaller, as it groups the characters on the first loop. So the cost will be n+m (where n is the strings and m the number of distinct charecters)
 
 #### 3. How to test the implementations
 
