@@ -17,3 +17,7 @@ A part de resoldre els exercicis es valorarà argumentar breument:
 1 setmana. Per tant, el dimecres dia 30 d'octubre és el darrer dia per presentar el resultat.
 El temps aproximat per resoldre la prova és de 90-120 minuts.
 
+
+## Solutions
+
+Each solution for it's task is in each folder. Explained in the readme. I prefer the first task as I really enjoyed building the solution of the Monte Carlo approximation
