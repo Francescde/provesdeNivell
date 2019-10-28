@@ -10,36 +10,56 @@ export class HannoySolver implements HannoySolver{
         this.towers = [new Tower(levels), new Tower(0), new Tower(0)]
     }
 
-    moveFromTowerTo(from:number, to:number){
+    solve(){
+        const moves:number=(2**this.levels)-1;
+        let destiny:number=2;
+        let auxiliar:number=1;
+        console.log(moves,this.levels%2);
+        if(this.levels%2==0){
+            auxiliar=2;
+            destiny=1;
+        }
+        for (let i:number=1; i<=moves; ++i){
+            if(i%3==1){
+                this.legalMove(0,destiny);
+            }
+            if(i%3==2){
+                this.legalMove(0,auxiliar);
+            }
+            if(i%3==0){
+                this.legalMove(auxiliar,destiny);
+            }
+        }
+    }
+
+    private legalMove(fromTower: number, toTower: number) {
+        if (this.towers[fromTower].lastLevelSize()<this.towers[toTower].lastLevelSize()
+            || this.towers[toTower].lastLevelSize() == undefined) {
+            this.moveFromTowerTo(fromTower, toTower);
+        }
+        else {
+            this.moveFromTowerTo(toTower, fromTower);
+        }
+    }
+
+    private moveFromTowerTo(from:number, to:number){
         this.towers[to].push(this.towers[from].pop())
     }
 
-    solved(){
-        return this.towers[2].levels()==this.levels;
-    }
-/*
-
-    def TowerOfHanoi(n , from_rod, to_rod, aux_rod):
-    if n == 1:
-        print "Move disk 1 from rod",from_rod,"to rod",to_rod
-    return
-    TowerOfHanoi(n-1, from_rod, aux_rod, to_rod)
-    print "Move disk",n,"from rod",from_rod,"to rod",to_rod
-    TowerOfHanoi(n-1, aux_rod, to_rod, from_rod)
-l*/
-
-    solve(move,t1,t2,t3) {
+    private move(move,from,aux,to) {
         if(move==1){
-            if (this.towers[t1].lastLevelSize() < this.towers[t3].lastLevelSize()
-                || this.towers[t3].lastLevelSize()==undefined)
-                this.moveFromTowerTo(t1, t3);
+            this.moveFromTowerTo(from, to);
         }
         else{
-            this.solve(move-1,t1,t3,t2);
-            if (this.towers[t1].lastLevelSize() < this.towers[t3].lastLevelSize()
-                || this.towers[t3].lastLevelSize()==undefined)
-            this.moveFromTowerTo(t1, t3);
-            this.solve(move-1,t2,t1,t3);
+            this.move(move-1,from,to,aux);
+            this.moveFromTowerTo(from, to);
+            this.move(move-1,aux,from,to);
         }
     }
+
+    solve2(){
+        this.move(this.levels,0,1,2);
+    }
+
+
 }

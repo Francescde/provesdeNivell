@@ -1,4 +1,4 @@
-##TASK 2: (Choose 2 out of 3)
+## TASK 2: (Choose 2 out of 3)
 
 Exercise 1:
 

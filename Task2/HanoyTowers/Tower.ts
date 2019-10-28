@@ -1,31 +1,31 @@
 export class Tower {
 
-    store: number[] = [];
+    _store: number[] = [];
 
     constructor(levels:number){
         for(let size=levels; size>0; --size){
-           this.store.push(size);
+           this._store.push(size);
         }
     }
 
     push(val: number) {
-        if(this.store.length>0) {
-            if(this.store[this.store.length-1]<=val){
+        if(this._store.length>0) {
+            if(this._store[this._store.length-1]<=val){
                 throw new Error('The last level is smaller than the new one');
             }
         }
-        this.store.push(val);
+        this._store.push(val);
     }
 
     pop(): number | undefined {
-        return this.store.pop();
+        return this._store.pop();
     }
 
     lastLevelSize(): number | undefined {
-        return this.store[this.store.length-1];
+        return this._store[this.levels()-1];
     }
 
     levels(): number{
-        return this.store.length;
+        return this._store.length;
     }
 }
