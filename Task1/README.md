@@ -77,6 +77,7 @@ As the hexahedron resulting from that colition will have it's edges parallel to 
 
 #### 3. How to test the implementation
 
+
 1.- Clone or download the repository.
 
     git clone https://github.com/Francescde/provesdeNivell.git
