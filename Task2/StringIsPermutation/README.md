@@ -1,12 +1,10 @@
 
-## Exercise 1:
+# Exercise 1:
 
 Given two strings, write a method to decide if one is a permutation of the other.
 
-
 ## Solution:
-
-My first solution was to sort the two strings, and comparing the results as done in the module StringArePermutation using the function compare
+My first solution was to sort the two strings and compare the results. To do that I used the module StringArePermutation using the function compare
 
     export function compare(text1: string, text2: string):boolean {
         const n1 = text1.length;
@@ -20,9 +18,9 @@ My first solution was to sort the two strings, and comparing the results as done
 
 ## Solution2:
 
-Another solution should be to build another structure as could be a hash list to know the letters and for each letter it's ocurrencies in the text and then asserting if are the same. 
+Another solution could be to count the repetitions of each of the letters within each of the two strings. At the end, we would contrast if the occurrencies of each letter are the same within the two strings.
 
-This solution is build in the module StringArePermutation using the function compare2
+This solution is built in the module StringArePermutation using the function compare2
 
     export function compare2(text1: string, text2: string):boolean {
         const n1 = text1.length;
@@ -57,11 +55,11 @@ This solution is build in the module StringArePermutation using the function com
 
 ## Decision
 
-Performance wise I think the second solution can be quicker than the first one with large strings. 
+Performance-wise, I think that the second solution can be faster than the first one when there are large strings.
 
-This is because the sorting algorithm needs from n*(log n) comparisons to n**2 (where n is the size of the strings) and it has to sort two strings and then compare the results.
+The reason is that the sorting algorithm requires anywhere from n*(log n) comparisons to n^2 (where n is the size of the strings), and it requires prior sorting of two strings, followed by comparing the results.
 
-On the other hand the other algorithm it's lineal with just two loops of n words. And the comparations are smaller, as it groups the characters on the first loop. So the cost will be n+m (where n is the strings and m the number of distinct charecters)
+On the other hand, the second algorithm is not lineal with only two loops of n words. Moreover, there are less comparisons, because it groups the characters on the first loop. Therefore, the computational cost will be n+m (where n is the length of the strings and m the number of distinct charecters)
 
 #### 3. How to test the implementations
 

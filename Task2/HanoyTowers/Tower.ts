@@ -3,6 +3,9 @@ export class Tower {
     _store: number[] = [];
 
     constructor(levels:number){
+        if(levels<0){
+            throw new Error('The tower showld be at least of size 0');
+        }
         for(let size=levels; size>0; --size){
            this._store.push(size);
         }

@@ -10,49 +10,48 @@ In the classic problem of Towers of Hanoi, you have 3 towers and N disks of diff
 
 ## The algorithm
 
-To solve the problem of Towers of Hanoi, one has to see first how he would solve it manualy
+To solve the problem of Towers of Hanoi, one has to first think how to solve it manually:
 
-So lets represent a sample case as:
+Let's represent a first sample case of three towes and one disk as:
 
-        1//-//-
-        
-To solved the next stage should be:
+    1//-//-
+Where 1 is the position of the disk.
 
-        -//-//1
-        
-Lets show differnt cases from less complex to more complex:
+ 
+To solve the problem with one disk, the next stage should be:
 
-levels = 2
+    -//-//1
+    
+We will now add one additional layer of complexity and solve the problem for two disks and three towers:
 
+Disks=2, where smaller numbers represent smaller disks, and the number on the left is the disk located on top:
 
-        12//-//-
-        
-        2//1//-
-        -//1//2
-        -//-//12
+    12//-//-
+    
+    2//1//-
+    -//1//2
+    -//-//12
+    
+Disks =3
 
-levels =3
-
-        123//-//-
-        
-        23//-//1
-        3//2//1
-        3//12//-
-        -//12//3
-        1//2//3
-        1//-//23
-        -//-//123
-        
-
-From the stated before we can see that the number of steps have an exponential incrementation:
+    123//-//-
+    
+    23//-//1
+    3//2//1
+    3//12//-
+    -//12//3
+    1//2//3
+    1//-//23
+    -//-//123
+    
+We can observe that the number of steps increments exponentially:
 
 number of moves= (2**number of levels)-1
 
-And to know the destination of the first move we have to see if the first disk is even or odd:
-Once done that we will keep changing the pices in this order(origin, first destination), (origin, second destination), (second destination, origin) until wee solve the game
+We decide the destination of the first move by checking if the first disk is even or odd. From there, we will keep moving the disks in this order (origin moves to first destination), (origin moves to second destination), (second destination moves to origin) until we solve the game.
 
-Therefore, the algorithm should be as follows:
-        
+Therefore, the algorithm that solves the towers of Hanoi problem should be as follows:
+
     1. Calculate the total number of moves required i.e. "pow(2, n)
        - 1" here n is number of disks.
     2. If number of disks (i.e. n) is even then interchange destination
@@ -72,42 +71,42 @@ Therefore, the algorithm should be as follows:
 ## Solution:
 
 
-I build this algorithm in the class HannoySolver with the function solve()
+I built this algorithm in the class HannoySolver with the function solve()
 
 
 ## Solution2:
 
-Following the algorithm defined before, we can observe a base case, when the disk has to be moved to the destination, and that the origin and destination keep changing in a constant way, knowing that we can trace it's behavior as follows:
+Following the algorithm defined above, we can observe a case where the disk has to be moved to the destination, and where the origin and destination keep changing in a constant manner. There, we can trace its behavior as follows:
 
 http://www.cs.utah.edu/~rmills/hanoi/hanoi_treeRecursion.jpg
 
-As shown in the image the moves draw a tree that is an structure easy to explore recursively as follows
+As shown in the image the moves draw a tree that is an easy structure to explore recursively as follows:
 
-        move(disk, source, inter, dest)
-        
-            IF disk is equal 1, THEN
-                  move disk from source to destination
-               ELSE
-                  move(disk - 1, source, destination, intermediate)   // Step 1
-                  move disk from source to destination                 // Step 2
-                  move(disk - 1, intermediate, source, destination)   // Step 3
-               END IF
-               
-            END
-            
-With that we can avoid lots of calculations
+    move(disk, source, inter, dest)
+    
+        IF disk is equal 1, THEN
+              move disk from source to destination
+        ELSE
+              move(disk - 1, source, destination, intermediate)   // Step 1
+              move disk from source to destination                 // Step 2
+              move(disk - 1, intermediate, source, destination)   // Step 3
+        END IF
+           
+    END
 
-I build this solution in the class HannoySolver with the function solve2()
 
+This second algorithm is easier as it allows to reduce the number of calculations.
+
+I built this solution in the class HannoySolver with the function solve2()
 ## Decision
 
-Given the fact that it uses less resources the second solution should be considered  the best performance wise
+The second solution uses less resources and therefore should be considered the best solution performance-wise. A disadvantage of this second solution is that it will be complicated for a new developer to change its behavior or edit the code.
 
-But I prefer the first implementation, although it uses more recurses as it has to do more calculations.
+In contrast, the first implementation uses more resources goes through more calculations. However, the code is very easy to understand and it would be straightforward for a new developer to edit or update the code.  
 
-The main reason for that is that it's more readable than the second one. And if a new developer has to change it's behavior it will have an easier time understanding the program. So in conclusion any update would be cheaper.
+Therefore, if the code will be updated regularly, then the best implementation is the first one because it is more readable than the second one. In turn,  if a new developer will be able to easily update the code because the program is easy to understand. has to change it's behavior it will have an easier time understanding the program. This ultimately translates into a code that is cheaper to update.
 
-Furthermore If the performance is a decisive factor, a great speed up could be archived by implementing the algorithm in a compiled language like c rather than an interpreted one, and also if all we want is a better execution time the solution is rather simple: It's as easy as to look for a better machine.
+If performance is a decisive factor, we could either use the second implementation or also greatly speed up the code by implementing the algorithm in a compiled language like c rather than an interpreted one.
 
 ## How to test the implementations
 

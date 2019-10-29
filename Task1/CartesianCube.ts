@@ -5,6 +5,9 @@ export class CartesianCube implements CartesianCube{
     size: number;
     center: Point;
     constructor( size:number,center:Point){
+        if(size<0){
+            throw new Error("Negative sizes aren't alowed");
+        }
         this.size=size;
         this.center=center;
     }

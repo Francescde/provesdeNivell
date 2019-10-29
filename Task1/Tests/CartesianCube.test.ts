@@ -15,6 +15,16 @@ describe("Given the size, and the center coordinates of a cube", () => {
         expect(cartesianCube.center.y).toBe(coordinates.y);
         expect(cartesianCube.center.z).toBe(coordinates.z);
     });
+
+
+    it("Size can't be negative", () => {
+        let size : number =-1;
+        try {
+            new CartesianCube(size,new Point(7,7,0));
+        }catch (e) {
+            expect(e).toEqual(new Error("Negative sizes aren't alowed"));
+        }
+    });
 });
 
 describe("Given a cube with edges parallel to the axes", () => {

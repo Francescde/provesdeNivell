@@ -11,9 +11,9 @@ Note: the coordinates specify the CENTER of the cube!
 
 ## Result:
 
-To assert the collision of the cubes and the volume intersection I built the library intersection. In this library we have the function cartesianCubesIntersect wich handles the intersection of two cubes with the same characteristics of the cubes described in the statement.
+To assert the collision of the cubes and the intersection volume, I built the intersection library. The library contains the function cartesianCubesIntersect, which handles the intersection of two cubes. The two cubes have the same characteristics as the ones described in the statement.
 
-The function cartesianCubesIntersect uses the particularity of having the edges parallel to the axes to answer if they colide and the volume of the interssection. To that end cartesianCubesIntersect uses the class CartesianCube that describes a cube with this particularity.
+To answer if the two cubes collide, the function cartesianCubesIntersect uses the assumption -as stated in the problem description- that the cube edges are parallel to each other. The function also assumes that the two cubes are not rotated in any way -as stated-, meaning that the two cubes' axes are perpendicular to the main Cartesian coordinates axes (x, y, z). To that end, cartesianCubesIntersect uses the class CartesianCube that describes a cube with this assumption.
 
     cartesianCubesIntersect(cube1: CartesianCube, cube2: CartesianCube) {
         let intersection= {
@@ -22,12 +22,12 @@ The function cartesianCubesIntersect uses the particularity of having the edges 
         };
         return intersection;
     }
-
-In particular cartesianCube solves us:
+    
+In particular, cartesianCube solves:
 
 ##### 1.  Does the cube intersect with another cube?
 
-The cartesianCube class have the funcion cartesianCubeIntersection wich asserts if another cartesianCube collides with the cube described by the class. It does that by looking if for all the axes the distance between the centers of the cubes is less than the sumatory of half the sides distance. This works for the cartesianCubes as all the edges of the cube follow the axes, as stated before.
+The cartesianCube class contains the function cartesianCubeIntersection. cartesianCubeIntersection asserts whether another cartesianCube collides with the cube described by the class. To do that, we start by comparing the size of the cubes with the distance between the centers of the cubes. Two cubes do not collide when in at least one of their three axes, the distance between the two cubes' centers is larger than the sum of the two cube's half edge lengths. Therefore, the function cartesianCubeIntersection calculates for each Cartesian axis if the distance between the centers of the two cubes is less than half of the sum of the cube sizes.
 
     cartesianCubeIntersection( otherCube: CartesianCube){
         //check the X axis
@@ -50,10 +50,9 @@ The cartesianCube class have the funcion cartesianCubeIntersection wich asserts 
 
 #### 2.  What is the volume of the shared space?
 
-The function cartesianCubeVolumeOfIntersection of the class cartesianCube gives us the volume of the collision space between the cartesianCube by the class and another cartesianCube.
+The function cartesianCubeVolumeOfIntersection of the class cartesianCube gives us the volume of the collision space between two cartesianCube.
 
-As the hexahedron resulting from that colition will have it's edges parallel to the axis. We just need to know the cube minimum and maxim values for each axis. With that information we can know the vertices of the resulting hexaedron and get it's volume.
-
+The hexahedron resulting from the collision of the two tubes has edges that are parallel to the main Cartesian axes. Therefore, we just need to know the intersection position of the two cubes. We call these positions as minimum (min) or maximum(max), and we calculate them for each of the three axes. With that information we can know the vertices of the resulting hexaedron, and in turn, calculate its volume.
 
     cartesianCubeVolumeOfIntersection(other: CartesianCube) {
         let volume:number=0;
@@ -101,11 +100,11 @@ As the hexahedron resulting from that colition will have it's edges parallel to 
 
 #### 4. Other possible solutions
 
-Another possible solution would be to use the Monte Carlo Estimation to check the resulting volume of the collision
+Another possible solution would be to use a Monte Carlo method to measure the resulting collision volume.
 
-The idea is to try N random points in a finite space containing the intersecting volume. As we are able to easily check if a point is part of the intersection, we can easily manage a large sample of points. Using that sample we are able to estimate the probability for a random point to be part of the intersected space. 
+Monte Carlo methods rely on random sampling to obtain numerical results. In this problem, Monte Carlo could be used to sample N random points in a finite space containing the intersecting volume of the two cubes. It is simple to check if a point is inside or outside of the intersected volume. Therefore, we can easily manage a large sample of random data points. By the law of large numbers, the probability of a random point being part of the intersected space is directly correlated to the relative volume of the intersected space.
 
-As we know the volume of the observed space, thus we can deduce the volume of the intersected space is: the volum of the observet space multiplied by the probability of being part of the intersected space.
+We know the volume of the observed space. Thus, we can deduce that the volume of the intersected space is the volume of the observed space multiplied by the probability of drawing a random point that is part of the intersected space
 
         Intersected volume = volume observation x probability of random point being inside intersection
     
@@ -146,18 +145,11 @@ The following code implements this functionality in python:
         count_in_sphere=len(colides[0])
         return np.power(radio*2, dim)* (count_in_sphere / iterations)
     
-To use this implementation we would just need to specify the maximum distance from the center of coordinates and the volume of the intersecting figures.
-
-In the sample case scenario:
-
-        
-    r=4
-    print(Volume(Cube(7,0,0,0),Cube(1,3.5,3.5,0),r))
     
 
-The bigest advantage of this method is that it doesen't just allows us to get the volume of two intersecting cubes, we could define any other figure and the code would be able to estimate it's volume.
+The main advantage of the Monte Carlo method is that it can be easily expanded to estimate the collision space between any two other arbitrary volumes.
 
-For example, we could define an sphere as we do in the following code:
+For example, we could define a sphere as in the following code:
 
     class Sphere:
       def __init__(self, radius):
@@ -171,6 +163,6 @@ For example, we could define an sphere as we do in the following code:
     print(Volume(Cube(1,0.5,0.5,0.5),Sphere(1),r))
 
 
-The major drawback of this method is that we need the computation of N random points. In contrast with the geometrical way, that it would had the cost of calculaing one point. So althought for complex volumes this aproximation could be a realy reasonable way. In this particular case i prefer the geometrical way.
+The drawbacks of Monte Carlo are that it relies on large numbers and repeated random sampling. Therefore, it requires calculating the positions of N random points.  In contrast, the geometric solution to the problem has a lower computational cost, because it allows to calculate only the position of the intersection of the two cubes. Therefore, Monte Carlo has the advantage that it can be a simpler solution for arbitrary complex shapes and the drawback of the large random sampling requirement. In this particular problem -only two cubes intersection- the most reasonable solution is to solve the problem from a purely geometrical perspective.
 
-To check the Monte Carlo method i build the script ***Monte Carlo.ipynb*** executable in google coolab
+To check the Monte Carlo method I built the script: ***Monte Carlo.ipynb***, which is executable in google coolab

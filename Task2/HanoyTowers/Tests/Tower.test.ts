@@ -8,6 +8,15 @@ describe("Given a new tower", () => {
         expect(tower.levels()).toBe(levels);
     });
 
+    it("it should have at least 0 levels", () => {
+        let levels : number =-1;
+        try {
+            expect(new Tower(levels)).toThrowError('The tower showld be at least of size 0');
+        }catch (e) {
+            expect(e).toEqual(new Error('The tower showld be at least of size 0'));
+        }
+    });
+
     it("it should have the levels specified in the constructor", () => {
         let levels : number =6;
         let tower: Tower = new Tower(levels);
