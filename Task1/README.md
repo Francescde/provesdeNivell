@@ -94,6 +94,10 @@ As the hexahedron resulting from that colition will have it's edges parallel to 
 
     npm test
 
+5.- Run the test coverage
+
+    npm run coverage
+
 
 #### 4. Other possible solutions
 

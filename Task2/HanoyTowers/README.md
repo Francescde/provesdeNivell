@@ -107,8 +107,7 @@ But I prefer the first implementation, although it uses more recurses as it has 
 
 The main reason for that is that it's more readable than the second one. And if a new developer has to change it's behavior it will have an easier time understanding the program. So in conclusion any update would be cheaper.
 
-Furthermore i don't consider in this scenario the execution time to be a decisive factor. If i did i would have built the solution in a compiled language like c rather than an interpreted one, and also if i want a better execution time the solution is rather simple: It's as easy as to look for a better machine.
-
+Furthermore If the performance is a decisive factor, a great speed up could be archived by implementing the algorithm in a compiled language like c rather than an interpreted one, and also if all we want is a better execution time the solution is rather simple: It's as easy as to look for a better machine.
 
 ## How to test the implementations
 
@@ -127,5 +126,9 @@ Furthermore i don't consider in this scenario the execution time to be a decisiv
 4.- Run the tests on the subfolder Tests
 
     npm test
+
+5.- Run the test coverage
+
+    npm run coverage
 
 

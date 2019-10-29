@@ -81,4 +81,8 @@ On the other hand the other algorithm it's lineal with just two loops of n words
 
     npm test
 
+5.- Run the test coverage
+
+    npm run coverage
+
 
