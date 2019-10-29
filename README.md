@@ -20,5 +20,4 @@ El temps aproximat per resoldre la prova és de 90-120 minuts.
 
 ## Solutions
 
-Each solution for it's task is in each folder. Explained in the readme. 
-As I had to pick a task, I chose the first task as I really enjoyed building the solution of the Monte Carlo approximation
+Each solution for it's task is in each folder. Explained in each readme. As I had to pick a task, I chose the first task as I really enjoyed building the solution of the Monte Carlo approximation and I find it interesting as it has many more applications.
